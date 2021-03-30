@@ -9,6 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetAndroid">
+        <activity android:name=".ErreursActivity" />
+        <activity android:name=".FelicitationsActivity" />
+        <activity android:name=".TableMultiplicationActivity" />
+        <activity android:name=".ChoixExercice" />
+        <activity android:name=".ExoMath" />
+        <activity android:name=".TablesMultiplication" />
+
+
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

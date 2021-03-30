@@ -1,20 +1,29 @@
 package com.example.projetandroid;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.example.projetandroid.data.Multiplication;
+
+import java.util.zip.Inflater;
 
 public class TableMultiplicationActivity extends AppCompatActivity {
 
     public static final String TABLE = "1" ;
-    TextView rows;
-    EditText resultat;
-    LinearLayout layout;
-    int nb;
+    private TextView rows;
+    private EditText resultat;
+    private LinearLayout layout;
+    private int nb;
+    private Multiplication tableMultipication;
+
 
 
     @Override
@@ -23,32 +32,44 @@ public class TableMultiplicationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_table_multiplication);
         nb = Integer.parseInt(getIntent().getStringExtra(TABLE));
         layout = findViewById(R.id.rowsLayout);
+        tableMultipication = new Multiplication(nb);
+        tableMultipication.setTables();
+        tableMultipication.setResultats();
 
-        for (int i = 1; i<=10; i++) {
-            LinearLayout layout_number = (LinearLayout) getLayoutInflater().inflate(R.layout.template_calcul, null);
-            rows = layout_number.findViewById(R.id.template_calcul);
-            rows.setText(i +" x "+ nb + " = ");
-            resultat = layout_number.findViewById(R.id.template_resultat);
-            resultat.setHint("?");
-            layout.addView(layout_number);
+        for(Multiplication multi : tableMultipication.getTables()) {
+            LinearLayout linearTMP = (LinearLayout) getLayoutInflater().inflate(R.layout.template_calcul, null);
+            TextView calc = (TextView) linearTMP.findViewById(R.id.text_calcul);
+            calc.setText(multi.getOperande1()+ " x " + multi.getOperande2() + " = ");
+            layout.addView(linearTMP);
         }
     }
 
     public void correctionTable(View view) {
-        int justes = 0;
-        for (int i = 0; i < layout.getChildCount(); i++) {
-            View child = layout.getChildAt(i);
-            if (child instanceof LinearLayout && ((LinearLayout) child).getChildAt(i) instanceof EditText) {
-                EditText reponse = (EditText) ((LinearLayout) child).getChildAt(i);
+        int[] resultats = tableMultipication.getResultats();
+        int erreurs = 0;
+        for (int i = 2; i < layout.getChildCount(); i++) {
+            if (layout.getChildAt(i) instanceof LinearLayout) {
+                LinearLayout child = (LinearLayout) layout.getChildAt(i);
+                EditText reponse = (EditText) child.findViewById(R.id.template_resultat);
                 int rep = -1;
                 if (!reponse.getText().toString().isEmpty()) {
                     rep = Integer.parseInt(reponse.getText().toString());
+                } else {
+                    erreurs++;
                 }
-                if (rep != ((i+1)*nb)) {
-
+                if (rep != resultats[i-2]) {
+                    erreurs++;
                 }
             }
         }
-
+        if (erreurs == 0) {
+            Intent intent = new Intent(TableMultiplicationActivity.this, FelicitationsActivity.class);
+            startActivity(intent);
+        }
+        else {
+            Intent intent2 = new Intent(TableMultiplicationActivity.this, ErreursActivity.class);
+            intent2.putExtra(ErreursActivity.ERR, erreurs);
+            startActivity(intent2);
+        }
     }
 }

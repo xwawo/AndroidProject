@@ -20,7 +20,7 @@ public class FelicitationsActivity extends AppCompatActivity {
     }
 
     public void choixExercice(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, ChoixExercice.class);
         startActivity(intent);
     }
 }

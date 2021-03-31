@@ -11,7 +11,7 @@ public class Multiplication {
     private int[] resultats;
 
     public Multiplication(int n) {
-        table = n;
+        this.table = n;
     }
 
 

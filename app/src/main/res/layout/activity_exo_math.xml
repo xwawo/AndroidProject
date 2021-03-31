@@ -8,6 +8,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="+"
+        android:onClick="Additions"
         />
 
     <Button
@@ -15,7 +16,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="-"
-        android:onClick="Additions"/>
+        android:onClick="Soustractions"/>
 
     <Button
         android:layout_width="wrap_content"

@@ -15,6 +15,7 @@
         <activity android:name=".ChoixExercice" />
         <activity android:name=".ExoMath" />
         <activity android:name=".TablesMultiplication" />
+        <activity android:name=".CreerCompte" />
 
 
 

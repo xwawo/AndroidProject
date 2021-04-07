@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetAndroid">
+        <activity android:name=".AdditionSoustractionActivity" />
         <activity android:name=".ErreursActivity" />
         <activity android:name=".FelicitationsActivity" />
         <activity android:name=".TableMultiplicationActivity" />

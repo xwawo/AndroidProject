@@ -28,8 +28,8 @@ public class ErreursActivity extends AppCompatActivity {
         nbErr.setText("Nombre d'erreurs : " + nb);
     }
 
-    public void choixTable(View view) {
-        Intent intent = new Intent(this, TablesMultiplication.class);
+    public void choixExo(View view) {
+        Intent intent = new Intent(this, ExoMath.class);
         startActivity(intent);
     }
 

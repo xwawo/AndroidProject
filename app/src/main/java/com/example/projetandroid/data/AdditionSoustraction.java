@@ -8,9 +8,11 @@ public class AdditionSoustraction {
     private String op;
     private AdditionSoustraction[] operations;
     private int[] resultats;
+    private int niveau;
 
-    public AdditionSoustraction(String s) {
+    public AdditionSoustraction(String s, int lvl) {
         this.op = s;
+        this.niveau = lvl;
     }
 
     public void setOperande1(int operande1) {
@@ -25,20 +27,17 @@ public class AdditionSoustraction {
         operations = new AdditionSoustraction[5];
         if (op.equals("+")) {
             for (int i = 0; i<= 4; i++) {
-                AdditionSoustraction obj = new AdditionSoustraction("+");
-                obj.setOperande1(getRandomNumberInRange(1,10));
-                obj.setOperande2(getRandomNumberInRange(1,10));
+                AdditionSoustraction obj = new AdditionSoustraction("+",niveau);
+                obj.setOperande1(getRandomNumberInRange(1, (int) (10*Math.pow(10,niveau))));
+                obj.setOperande2(getRandomNumberInRange(1,(int) (10*Math.pow(10,niveau))));
                 operations[i] = obj;
             }
         }
         else {
             for (int i = 0; i<= 4; i++) {
-                AdditionSoustraction obj = new AdditionSoustraction("-");
-                obj.setOperande1(getRandomNumberInRange(1,10));
-                obj.setOperande2(getRandomNumberInRange(1,10));
-                while (operande2 > operande1) {
-                    obj.setOperande2(getRandomNumberInRange(1,10));
-                }
+                AdditionSoustraction obj = new AdditionSoustraction("-",niveau);
+                obj.setOperande1(getRandomNumberInRange(1,(int) (10*Math.pow(10,niveau))));
+                obj.setOperande2(getRandomNumberInRange(1,obj.getOperande1()));
                 operations[i] = obj;
             }
         }
@@ -47,14 +46,15 @@ public class AdditionSoustraction {
 
 
     public void setResultats() {
-        if (getOp() == "+") {
-            for (int i = 0; i <= operations.length; i++) {
+        resultats = new int[5];
+        if (op.equals("+")) {
+            for (int i = 0; i < operations.length; i++) {
                 resultats[i] = operations[i].getOperande1() + operations[i].getOperande2();
             }
         }
         else {
-            for (int i = 0; i <= operations.length; i++) {
-                resultats[i] = operations[i].getOperande1() - operations[i].getOperande2();
+            for (int j = 0; j < operations.length; j++) {
+                resultats[j] = operations[j].getOperande1() - operations[j].getOperande2();
             }
         }
     }

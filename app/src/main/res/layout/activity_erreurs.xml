@@ -37,8 +37,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Choisir une autre table"
-            android:onClick="choixTable"/>
+            android:text="Choisir un autre exercice"
+            android:onClick="choixExo"/>
     </LinearLayout>
 
 </LinearLayout>

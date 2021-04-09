@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class CreerCompte extends AppCompatActivity {
 
+    MyApplication mapp;
+
     // DATA
     private DatabaseClient mDb;
 
@@ -23,6 +25,9 @@ public class CreerCompte extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //récuération de l'instance de MyActivity
+        mapp=MyApplication.getInstance();
 
         // On charge le XML pour créer l'arbre graphique
         setContentView(R.layout.activity_creation_compte);
@@ -43,13 +48,13 @@ public class CreerCompte extends AppCompatActivity {
 
         // Vérifier les informations fournies par l'utilisateur
         if (sNom.isEmpty()) {
-            editTextNomView.setError("Task required");
+            editTextNomView.setError("Nom required");
             editTextNomView.requestFocus();
             return;
         }
 
         if (sPrenom.isEmpty()) {
-            editTextPrenomView.setError("Desc required");
+            editTextPrenomView.setError("Prenom required");
             editTextPrenomView.requestFocus();
             return;
         }
@@ -81,6 +86,8 @@ public class CreerCompte extends AppCompatActivity {
 
                 // Quand un utilisateur est créée, on arrête l'activité CreerCompte (on l'enleve de la pile d'activités)
                 setResult(RESULT_OK);
+                mapp.setNom(sNom);
+                mapp.setPrenom(sPrenom);
                 finish();
                 Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG).show();
             }

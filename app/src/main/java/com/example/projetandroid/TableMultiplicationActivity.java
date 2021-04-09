@@ -68,6 +68,7 @@ public class TableMultiplicationActivity extends AppCompatActivity {
         }
         else {
             Intent intent2 = new Intent(TableMultiplicationActivity.this, ErreursActivity.class);
+            intent2.putExtra(ErreursActivity.LIB, "*");
             intent2.putExtra(ErreursActivity.ERR, erreurs/2);
             startActivity(intent2);
         }

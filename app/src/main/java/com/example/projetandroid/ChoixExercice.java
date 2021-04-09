@@ -23,5 +23,7 @@ public class ChoixExercice extends AppCompatActivity {
     }
 
     public void exercisesQuiz(View view) {
+        Intent QuizExercicesActivity = new Intent(ChoixExercice.this, ExoQuiz.class);
+        startActivity(QuizExercicesActivity);
     }
 }

@@ -8,8 +8,6 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FelicitationsActivity extends AppCompatActivity {
-    public static final String LIB = "";
-    public static final String LVL = "";
     private Button bouton1;
     private Button bouton2;
     private String libelle;
@@ -19,8 +17,9 @@ public class FelicitationsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_felicitations);
-        libelle = getIntent().getStringExtra(LIB);
-        niveau = getIntent().getIntExtra(LVL, 1);
+        Bundle extras = getIntent().getExtras();
+        libelle = extras.getString("LIB");
+        niveau = extras.getInt("LVL",0);
         bouton1 = findViewById(R.id.btn1);
         if (libelle.equals("+") || libelle.equals("-")) {
             if (niveau <= 3) {

@@ -26,7 +26,7 @@ public class ExoMath extends AppCompatActivity {
 
     public void Multiplications(View view) {
         Intent TablesActivity = new Intent(ExoMath.this, TablesMultiplication.class);
-
+        TablesActivity.putExtra(AdditionSoustractionActivity.OP,"*");
         startActivity(TablesActivity);
     }
 

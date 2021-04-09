@@ -10,6 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetAndroid">
         <activity android:name=".AdditionSoustractionActivity" />
+        <activity android:name=".ExoQuiz" />
+        <activity android:name=".QcmActivity" />
         <activity android:name=".ErreursActivity" />
         <activity android:name=".FelicitationsActivity" />
         <activity android:name=".TableMultiplicationActivity" />

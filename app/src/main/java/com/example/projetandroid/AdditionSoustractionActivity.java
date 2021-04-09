@@ -60,12 +60,15 @@ public class AdditionSoustractionActivity extends AppCompatActivity {
         }
         if (erreurs == 0) {
             Intent intent = new Intent(AdditionSoustractionActivity.this, FelicitationsActivity.class);
-            intent.putExtra(FelicitationsActivity.LVL,niveau );
-            intent.putExtra(FelicitationsActivity.LIB, op);
+            Bundle extras = new Bundle();
+            extras.putString("LIB", op);
+            extras.putInt("LVL", niveau);
+            intent.putExtras(extras);
             startActivity(intent);
         }
         else {
             Intent intent2 = new Intent(AdditionSoustractionActivity.this, ErreursActivity.class);
+            intent2.putExtra(ErreursActivity.LIB, op);
             intent2.putExtra(ErreursActivity.ERR, erreurs/2);
             startActivity(intent2);
         }

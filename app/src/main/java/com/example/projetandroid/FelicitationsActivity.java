@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FelicitationsActivity extends AppCompatActivity {
+    private TextView texte;
     private Button bouton1;
     private Button bouton2;
     private String libelle;
@@ -21,6 +23,7 @@ public class FelicitationsActivity extends AppCompatActivity {
         libelle = extras.getString("LIB");
         niveau = extras.getInt("LVL",0);
         bouton1 = findViewById(R.id.btn1);
+        texte = findViewById(R.id.feli_text);
         if (libelle.equals("+") || libelle.equals("-")) {
             if (niveau <= 3) {
                 bouton1.setText("Passer au niveau suivant");
@@ -28,6 +31,10 @@ public class FelicitationsActivity extends AppCompatActivity {
             else {
                 bouton1.setText("Choisir une autre operation");
             }
+        }
+        else if (libelle.equals("quiz")){
+            texte.setText("Felicitations! Vous avez " + niveau + " bonnes reponses sur 10");
+            bouton1.setText("Passer à un autre sujet");
         }
 
     }
@@ -46,6 +53,10 @@ public class FelicitationsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
 
+        }
+        else if (libelle.equals("quiz")) {
+            Intent intent = new Intent(this, ExoQuiz.class);
+            startActivity(intent);
         }
         else {
             Intent intent = new Intent(this, TablesMultiplication.class);

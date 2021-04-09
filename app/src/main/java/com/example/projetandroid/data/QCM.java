@@ -2,6 +2,19 @@ package com.example.projetandroid.data;
 
 public class QCM {
     private String topic;
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public static String getQuestions(int i,int j) {
+        return questions[i][j];
+    }
+
+    public static String[] getReponses() {
+        return reponses;
+    }
+
     private static final String[][] questions = {
             {"Dans quelle ville se trouve la Statue de la Liberté ?"},
             {"Washington","Chicago","New York","Los Angeles"},{"Sur quel continent le Nil coule-t-il ?"},
@@ -28,6 +41,7 @@ public class QCM {
     private static final String[] reponses = {"New York", "L'Afrique","Luxembourg", "Oslo", "Autriche","Manille",
             "L'Italie","Suez","Les Pyrénées","Lyon","France - Royaume-Uni - Russie","Giulio Cesare","Les tsars",
             "Sparte","Compiègne","55 à 66 millions de morts","Osiris","1991","L'Italie","L'Encyclopédie"};
+
     private QCM[] Quiz;
 
 
@@ -35,7 +49,4 @@ public class QCM {
         topic = s;
     }
 
-    public void creerQCM() {
-
-    }
 }

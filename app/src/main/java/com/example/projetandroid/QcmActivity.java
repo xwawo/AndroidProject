@@ -16,15 +16,16 @@ import com.example.projetandroid.data.QCM;
 
 public class QcmActivity extends AppCompatActivity {
     public static final String TOPIC = "";
-    QCM quiz;
-    LinearLayout layout;
-    TextView question;
-    TextView text_score;
-    RadioGroup reponses;
-    Button boutonValider;
-    int indexQ;
-    int indexR;
-    int score;
+    private QCM quiz;
+    private LinearLayout layout;
+    private TextView question;
+    private TextView text_score;
+    private RadioGroup reponses;
+    private Button boutonValider;
+    private int indexQ;
+    private int indexR;
+    private int score;
+    private int limit;
 
 
 
@@ -42,9 +43,11 @@ public class QcmActivity extends AppCompatActivity {
         score = 0;
         indexR = 1;
         indexQ = 0;
+        limit = 19;
         if (topic.equals("hist")) {
             indexQ = 20;
             indexR=21;
+            limit = 38;
         }
         creerContexe();
 
@@ -61,7 +64,7 @@ public class QcmActivity extends AppCompatActivity {
             else {
                 Toast.makeText(getApplicationContext(), "Mauvaise Reponse :(", Toast.LENGTH_LONG).show();
             }
-            if (indexQ <= 38) {
+            if (indexQ <= limit) {
             creerContexe();}
             else {
                 Intent intent = new Intent(QcmActivity.this, FelicitationsActivity.class);

@@ -38,7 +38,7 @@ public class QCM {
             {"L'Allemagne","Le Royaume-Uni","Le Portugal","L'Italie"},{"Que n'a pas créé Napoléon Bonaparte ?"},
             {"La Banque de France","Le Code civil","L'Encyclopédie","La Légion d'honneur"},
     };
-    private static final String[] reponses = {"New York", "L'Afrique","Luxembourg", "Oslo", "Autriche","Manille",
+    private static final String[] reponses = {"New York", "L’Afrique","Luxembourg", "Oslo", "Autriche","Manille",
             "L'Italie","Suez","Les Pyrénées","Lyon","France - Royaume-Uni - Russie","Giulio Cesare","Les tsars",
             "Sparte","Compiègne","55 à 66 millions de morts","Osiris","1991","L'Italie","L'Encyclopédie"};
 

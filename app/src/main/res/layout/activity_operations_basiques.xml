@@ -10,7 +10,10 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="A toi de jouer !!"
-        android:gravity="center"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:fontFamily="casual"
+        android:gravity="center_horizontal"
         android:textSize="30sp"/>
 
     <Button

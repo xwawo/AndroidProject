@@ -1,22 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <Button
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mathematiques"
-        android:gravity="center"
-        android:onClick="exercicesMath"/>
+        android:text="Salut   ! choisi le sujet qui t'interesse "
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:fontFamily="casual"
+        android:gravity="center_horizontal"
+        android:textSize="20sp"
+        android:layout_marginBottom="200dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Culture Generale"
-        android:onClick="exercisesQuiz"/>
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:background="@drawable/math"
+            android:layout_gravity="center_horizontal"
+            android:onClick="exercicesMath"
+            android:layout_height="150dp"
+            android:layout_width="150dp"
+            android:layout_marginBottom="20sp" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:background="@drawable/download"
+            android:layout_gravity="center_horizontal"
+            android:onClick="exercisesQuiz"
+            android:layout_height="150dp"
+            android:layout_width="150dp"/>
+
+    </LinearLayout>
+
+
+
+
 
 
 </LinearLayout>

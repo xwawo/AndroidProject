@@ -14,11 +14,13 @@ public class FelicitationsActivity extends AppCompatActivity {
     private Button bouton2;
     private String libelle;
     private int niveau;
+    private MyApplication mapp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_felicitations);
+        mapp = MyApplication.getInstance();
         Bundle extras = getIntent().getExtras();
         libelle = extras.getString("LIB");
         niveau = extras.getInt("LVL",0);
@@ -33,7 +35,7 @@ public class FelicitationsActivity extends AppCompatActivity {
             }
         }
         else if (libelle.equals("quiz")){
-            texte.setText("Felicitations! Vous avez " + niveau + " bonnes reponses sur 10");
+            texte.setText("Felicitations " + mapp.getPrenom() +" ! Vous avez " + niveau + " bonnes reponses sur 10");
             bouton1.setText("Passer à un autre sujet");
         }
 

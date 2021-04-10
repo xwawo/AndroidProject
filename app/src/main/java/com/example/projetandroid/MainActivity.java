@@ -98,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(JouerActivity);
                 } else {
                     Toast.makeText(this, mapp.getPrenom()+ " "+ mapp.getNom(), Toast.LENGTH_SHORT).show();
+                    Intent JouerActivity = new Intent(MainActivity.this, ChoixExercice.class);
+                    startActivity(JouerActivity);
                 }
 
             } else if (resultCode == RESULT_CANCELED) {

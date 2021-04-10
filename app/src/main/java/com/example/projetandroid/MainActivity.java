@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 mapp.setId(user.getId());
                 mapp.setNom(user.getNom());
                 mapp.setPrenom(user.getPrenom());
+                mapp.setHighScore(user.getHighScore());
 
                 // Message
                 Toast.makeText(MainActivity.this, "Click : " + user.getId()+ " "+ user.getPrenom()+ " "+ user.getNom(), Toast.LENGTH_SHORT).show();

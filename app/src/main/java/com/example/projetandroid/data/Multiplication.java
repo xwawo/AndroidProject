@@ -12,17 +12,17 @@ public class Multiplication {
 
     public Multiplication(int n) {
         this.table = n;
-    }
+    } //constructeur avec la table de multiplication
 
 
-    public void setResultats() {
+    public void setResultats() { //creation des resultats à partir de la table
         resultats = new int[10];
         for (int i = 0; i<=9; i++) {
             resultats[i] = (i+1)*this.table;
         }
     }
 
-    public void setTables() {
+    public void setTables() { //creation des operations
         tables = new Multiplication[10];
         for (int i = 0; i<=9; i++) {
             Multiplication m = new Multiplication(this.table);

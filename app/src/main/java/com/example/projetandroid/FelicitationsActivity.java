@@ -62,6 +62,7 @@ public class FelicitationsActivity extends AppCompatActivity {
         }
         else {
             Intent intent = new Intent(this, TablesMultiplication.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
 
@@ -69,6 +70,7 @@ public class FelicitationsActivity extends AppCompatActivity {
 
     public void choixExercice(View view) {
         Intent intent = new Intent(this, ChoixExercice.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 }

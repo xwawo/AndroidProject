@@ -5,12 +5,12 @@ import java.util.Random;
 public class AdditionSoustraction {
     private int operande1;
     private int operande2;
-    private String op;
+    private String op;      // addition ou soustraction
     private AdditionSoustraction[] operations;
     private int[] resultats;
     private int niveau;
 
-    public AdditionSoustraction(String s, int lvl) {
+    public AdditionSoustraction(String s, int lvl) { //constructeur avec type d'operation et niveau de difficultè
         this.op = s;
         this.niveau = lvl;
     }
@@ -23,12 +23,12 @@ public class AdditionSoustraction {
         this.operande2 = operande2;
     }
 
-    public void setOperations() {
+    public void setOperations() { //creation des operations de maniere aleatoire
         operations = new AdditionSoustraction[5];
         if (op.equals("+")) {
             for (int i = 0; i<= 4; i++) {
                 AdditionSoustraction obj = new AdditionSoustraction("+",niveau);
-                obj.setOperande1(getRandomNumberInRange(1, (int) (10*Math.pow(10,niveau))));
+                obj.setOperande1(getRandomNumberInRange(1, (int) (10*Math.pow(10,niveau)))); //le niveau permet de gerer la difficulté des calculs
                 obj.setOperande2(getRandomNumberInRange(1,(int) (10*Math.pow(10,niveau))));
                 operations[i] = obj;
             }
@@ -45,7 +45,7 @@ public class AdditionSoustraction {
     }
 
 
-    public void setResultats() {
+    public void setResultats() { //creation d'un tableau avec les resultats des operations
         resultats = new int[5];
         if (op.equals("+")) {
             for (int i = 0; i < operations.length; i++) {
@@ -79,7 +79,7 @@ public class AdditionSoustraction {
         return resultats;
     }
 
-    private static int getRandomNumberInRange(int min, int max) {
+    private static int getRandomNumberInRange(int min, int max) { //fonction permettant de retourner un nombre aleatoire compris entre 2 bornes
 
         if (min >= max) {
             throw new IllegalArgumentException("max must be greater than min");

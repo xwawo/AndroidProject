@@ -15,7 +15,7 @@ public class QCM {
         return reponses;
     }
 
-    private static final String[][] questions = {
+    private static final String[][] questions = { //tableau à deux dimensions contenant questions et reponses
             {"Dans quelle ville se trouve la Statue de la Liberté ?"},
             {"Washington","Chicago","New York","Los Angeles"},{"Sur quel continent le Nil coule-t-il ?"},
             {"L’Océanie","L’Afrique","L’Europe","L’Amérique"},{"Où siège la Cour de Justice de l’Union européenne ?"},
@@ -38,7 +38,7 @@ public class QCM {
             {"L'Allemagne","Le Royaume-Uni","Le Portugal","L'Italie"},{"Que n'a pas créé Napoléon Bonaparte ?"},
             {"La Banque de France","Le Code civil","L'Encyclopédie","La Légion d'honneur"},
     };
-    private static final String[] reponses = {"New York", "L’Afrique","Luxembourg", "Oslo", "Autriche","Manille",
+    private static final String[] reponses = {"New York", "L’Afrique","Luxembourg", "Oslo", "Autriche","Manille", //tableau contenant la bonne reponse de chaque question
             "L'Italie","Suez","Les Pyrénées","Lyon","France - Royaume-Uni - Russie","Giulio Cesare","Les tsars",
             "Sparte","Compiègne","55 à 66 millions de morts","Osiris","1991","L'Italie","L'Encyclopédie"};
 
@@ -47,6 +47,6 @@ public class QCM {
 
     public QCM(String s) {
         topic = s;
-    }
+    } //initialisation avec le sujet du qcm (histoire/geo)
 
 }

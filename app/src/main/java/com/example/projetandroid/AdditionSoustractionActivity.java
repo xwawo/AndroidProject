@@ -20,6 +20,7 @@ public class AdditionSoustractionActivity extends AppCompatActivity {
     private AdditionSoustraction operations;
     private int niveau;
     private String op;
+    private TextView textNiveau;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +29,13 @@ public class AdditionSoustractionActivity extends AppCompatActivity {
         op = getIntent().getStringExtra(OP);
         niveau = getIntent().getIntExtra(String.valueOf(NIV),0);
         layout = findViewById(R.id.AddLayout);
+        textNiveau = findViewById(R.id.text_niveau);
+        textNiveau.setText("Niveau : " + (niveau+1));
         operations = new AdditionSoustraction(op,niveau);
-        operations.setOperations();
-        operations.setResultats();
+        operations.setOperations(); //creation des operations
+        operations.setResultats();  //creation des resultats
 
-        for(AdditionSoustraction calculs : operations.getOperations()) {
+        for(AdditionSoustraction calculs : operations.getOperations()) { // affichage des operations
             LinearLayout linearTMP = (LinearLayout) getLayoutInflater().inflate(R.layout.template_calcul, null);
             TextView calc = (TextView) linearTMP.findViewById(R.id.text_calcul);
             calc.setText(calculs.getOperande1()+ " " + op + " " + calculs.getOperande2() + " = ");
@@ -42,7 +45,7 @@ public class AdditionSoustractionActivity extends AppCompatActivity {
 
     public void correctionOp(View view) {
         int[] resultats = operations.getResultats();
-        int erreurs = 0;
+        int erreurs = 0; //nb d'erreurs
         for (int i = 2; i < layout.getChildCount(); i++) {
             if (layout.getChildAt(i) instanceof LinearLayout) {
                 LinearLayout child = (LinearLayout) layout.getChildAt(i);
@@ -52,9 +55,12 @@ public class AdditionSoustractionActivity extends AppCompatActivity {
                     rep = Integer.parseInt(reponse.getText().toString());
                 } else {
                     erreurs++;
+                    child.setBackgroundColor(16711680);
                 }
-                if (rep != resultats[i-2]) {
+                if (rep != resultats[i-3]) {
                     erreurs++;
+                    child.setBackgroundColor(16711680);
+
                 }
             }
         }
@@ -62,14 +68,14 @@ public class AdditionSoustractionActivity extends AppCompatActivity {
             Intent intent = new Intent(AdditionSoustractionActivity.this, FelicitationsActivity.class);
             Bundle extras = new Bundle();
             extras.putString("LIB", op);
-            extras.putInt("LVL", niveau);
+            extras.putInt("LVL", niveau); //on envoie le niveau courant qui sera ensuite incrementé si l'utilisateur decide de continuer
             intent.putExtras(extras);
             startActivity(intent);
         }
-        else {
+        else { //si il y a des erreurs..
             Intent intent2 = new Intent(AdditionSoustractionActivity.this, ErreursActivity.class);
-            intent2.putExtra(ErreursActivity.LIB, op);
-            intent2.putExtra(ErreursActivity.ERR, erreurs/2);
+            intent2.putExtra(ErreursActivity.LIB, op); //on envoie l'operation courante
+            intent2.putExtra(ErreursActivity.ERR, erreurs/2); //on envoie le nombre d'erreurs divisé par deux car chaque operation passe deux fois dans la boucle for
             startActivity(intent2);
         }
     }

@@ -7,6 +7,16 @@
     tools:context=".AdditionSoustractionActivity"
     android:id="@+id/AddLayout">
     <TextView
+        android:id="@+id/text_niveau"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Niveau : "
+        android:textColor="@color/black"
+        android:textAlignment="textStart"
+        android:fontFamily="casual"
+        android:textSize="20sp"
+        android:gravity="start" />
+    <TextView
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="A toi de jouer !!"

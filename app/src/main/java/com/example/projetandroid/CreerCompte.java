@@ -77,6 +77,9 @@ public class CreerCompte extends AppCompatActivity {
                         .userDao()
                         .insert(user);
 
+                // récupération de l'id dans la session
+                mapp.setId(mDb.getAppDatabase().userDao().getAll().size());
+
                 return user;
             }
 
@@ -86,6 +89,8 @@ public class CreerCompte extends AppCompatActivity {
 
                 // Quand un utilisateur est créée, on arrête l'activité CreerCompte (on l'enleve de la pile d'activités)
                 setResult(RESULT_OK);
+
+                // récupération du nom et prénom dans la séssion avant l'enregistrement dans la bd qui pourrait prendre du temps
                 mapp.setNom(sNom);
                 mapp.setPrenom(sPrenom);
                 finish();

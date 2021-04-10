@@ -47,7 +47,7 @@ public class TableMultiplicationActivity extends AppCompatActivity {
     public void correctionTable(View view) {
         int[] resultats = tableMultipication.getResultats();
         int erreurs = 0;
-        for (int i = 2; i < layout.getChildCount(); i++) {
+        for (int i = 1; i < layout.getChildCount(); i++) {
             if (layout.getChildAt(i) instanceof LinearLayout) {
                 LinearLayout child = (LinearLayout) layout.getChildAt(i);
                 EditText reponse = (EditText) child.findViewById(R.id.template_resultat);
@@ -57,14 +57,18 @@ public class TableMultiplicationActivity extends AppCompatActivity {
                 } else {
                     erreurs++;
                 }
-                if (rep != resultats[i-2]) {
+                if (rep != resultats[i-1]) {
                     erreurs++;
                 }
             }
         }
         if (erreurs == 0) {
             Intent intent = new Intent(TableMultiplicationActivity.this, FelicitationsActivity.class);
+            Bundle extras = new Bundle();
+            extras.putString("LIB", "*");
+            intent.putExtras(extras);
             startActivity(intent);
+
         }
         else {
             Intent intent2 = new Intent(TableMultiplicationActivity.this, ErreursActivity.class);

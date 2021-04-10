@@ -19,7 +19,7 @@ import db.User;
 
 public class MainActivity extends AppCompatActivity {
 
-    MyApplication mapp;
+    private MyApplication mapp;
 
     private static final int COMPTE_REQUEST = 0;
 
@@ -60,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
 
                 // Message
                 Toast.makeText(MainActivity.this, "Click : " + user.getId()+ " "+ user.getPrenom()+ " "+ user.getNom(), Toast.LENGTH_SHORT).show();
+
+                Intent JouerActivity = new Intent(MainActivity.this, ChoixExercice.class);
+                startActivity(JouerActivity);
             }
         });
     }
@@ -74,6 +77,10 @@ public class MainActivity extends AppCompatActivity {
         Intent JouerActivity = new Intent(MainActivity.this, ChoixExercice.class);
 
         startActivity(JouerActivity);
+        mapp.setId(0);
+        mapp.setNom(null);
+        mapp.setPrenom(null);
+        mapp.setHighScore(0);
     }
 
     public void JoueurIdentifier(View view) {

@@ -16,7 +16,16 @@ public class User {
     @ColumnInfo(name = "Prenom")
     private String Prenom;
 
+    @ColumnInfo(name = "HighScore")
+    private int HighScore;
 
+    public int getHighScore() {
+        return HighScore;
+    }
+
+    public void setHighScore(int highScore) {
+        HighScore = highScore;
+    }
 
     public int getId() {
         return id;

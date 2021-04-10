@@ -8,6 +8,7 @@ public class MyApplication extends Application {
     private String nom = null;
     private String prenom = null;
     private int id;
+    private int highScore;
 
 
     @Override
@@ -44,5 +45,13 @@ public class MyApplication extends Application {
     }
     public void setPrenom(String prenom) {
         this.prenom = prenom;
+    }
+
+    public void setHighScore(int highScore) {
+        this.highScore = highScore;
+    }
+
+    public int getHighScore() {
+        return highScore;
     }
 }

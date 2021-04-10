@@ -71,6 +71,7 @@ public class CreerCompte extends AppCompatActivity {
                 User user = new User();
                 user.setNom(sNom);
                 user.setPrenom(sPrenom);
+                user.setHighScore(0);
 
                 // adding to database
                 mDb.getAppDatabase()
@@ -79,6 +80,7 @@ public class CreerCompte extends AppCompatActivity {
 
                 // récupération de l'id dans la session
                 mapp.setId(mDb.getAppDatabase().userDao().getAll().size());
+                mapp.setHighScore(0);
 
                 return user;
             }

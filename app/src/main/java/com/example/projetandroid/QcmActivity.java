@@ -1,6 +1,7 @@
 package com.example.projetandroid;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projetandroid.data.QCM;
+
+import db.DatabaseClient;
+import db.User;
 
 public class QcmActivity extends AppCompatActivity {
     public static final String TOPIC = "";
@@ -27,11 +31,23 @@ public class QcmActivity extends AppCompatActivity {
     private int score;
     private int limit;
 
+    //instance
+    private MyApplication mapp;
+
+    // DATA
+    private DatabaseClient mDb;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //instance BD
+        mDb = DatabaseClient.getInstance(getApplicationContext());
+        //instance current user
+        mapp=MyApplication.getInstance();
+
+
         setContentView(R.layout.activity_qcm);
         String topic = getIntent().getStringExtra(TOPIC);
         layout = findViewById(R.id.qcm_layout);
@@ -71,8 +87,48 @@ public class QcmActivity extends AppCompatActivity {
                 Bundle extras = new Bundle();
                 extras.putString("LIB", "quiz");
                 extras.putInt("LVL",score);
-                intent.putExtras(extras);
-                startActivity(intent);
+                // enregistrement du score
+                if (score > mapp.getHighScore()) {
+                    mapp.setHighScore(score);
+                    class SaveScoreUser extends AsyncTask<Void, Void, User> {
+
+                        @Override
+                        protected User doInBackground(Void... voids) {
+
+                            // creating a task
+                            User user = new User();
+                            user.setNom(mapp.getNom());
+                            user.setPrenom(mapp.getPrenom());
+                            user.setHighScore(score);
+                            user.setId(mapp.getId());
+
+                            // adding to database
+                            mDb.getAppDatabase()
+                                    .userDao()
+                                    .update(user);
+                            return user;
+                        }
+
+                        @Override
+                        protected void onPostExecute(User user) {
+                            super.onPostExecute(user);
+
+                            // Quand un utilisateur est créée, on arrête l'activité CreerCompte (on l'enleve de la pile d'activités)
+                            setResult(RESULT_OK);
+                            Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG).show();
+                            intent.putExtras(extras);
+                            startActivity(intent);
+                        }
+                    }
+
+                    //////////////////////////
+                    // IMPORTANT bien penser à executer la demande asynchrone
+                    SaveScoreUser ssu = new SaveScoreUser();
+                    ssu.execute();
+                } else {
+                    intent.putExtras(extras);
+                    startActivity(intent);
+                }
             }
 
         }

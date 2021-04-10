@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class CreerCompte extends AppCompatActivity {
 
-    MyApplication mapp;
+    private MyApplication mapp;
 
     // DATA
     private DatabaseClient mDb;

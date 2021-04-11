@@ -26,18 +26,17 @@ public class AdditionSoustraction {
     public void setOperations() { //creation des operations de maniere aleatoire
         operations = new AdditionSoustraction[5];
         if (op.equals("+")) {
-            for (int i = 0; i<= 4; i++) {
-                AdditionSoustraction obj = new AdditionSoustraction("+",niveau);
-                obj.setOperande1(getRandomNumberInRange(1, (int) (10*Math.pow(10,niveau)))); //le niveau permet de gerer la difficulté des calculs
-                obj.setOperande2(getRandomNumberInRange(1,(int) (10*Math.pow(10,niveau))));
+            for (int i = 0; i <= 4; i++) {
+                AdditionSoustraction obj = new AdditionSoustraction("+", niveau);
+                obj.setOperande1(getRandomNumberInRange(1, (int) (10 * Math.pow(10, niveau)))); //le niveau permet de gerer la difficulté des calculs
+                obj.setOperande2(getRandomNumberInRange(1, (int) (10 * Math.pow(10, niveau))));
                 operations[i] = obj;
             }
-        }
-        else {
-            for (int i = 0; i<= 4; i++) {
-                AdditionSoustraction obj = new AdditionSoustraction("-",niveau);
-                obj.setOperande1(getRandomNumberInRange(1,(int) (10*Math.pow(10,niveau))));
-                obj.setOperande2(getRandomNumberInRange(1,obj.getOperande1()));
+        } else {
+            for (int i = 0; i <= 4; i++) {
+                AdditionSoustraction obj = new AdditionSoustraction("-", niveau);
+                obj.setOperande1(getRandomNumberInRange(1, (int) (10 * Math.pow(10, niveau))));
+                obj.setOperande2(getRandomNumberInRange(1, obj.getOperande1()));
                 operations[i] = obj;
             }
         }
@@ -51,8 +50,7 @@ public class AdditionSoustraction {
             for (int i = 0; i < operations.length; i++) {
                 resultats[i] = operations[i].getOperande1() + operations[i].getOperande2();
             }
-        }
-        else {
+        } else {
             for (int j = 0; j < operations.length; j++) {
                 resultats[j] = operations[j].getOperande1() - operations[j].getOperande2();
             }

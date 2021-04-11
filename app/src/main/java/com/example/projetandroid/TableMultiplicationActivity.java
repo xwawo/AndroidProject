@@ -17,13 +17,12 @@ import java.util.zip.Inflater;
 
 public class TableMultiplicationActivity extends AppCompatActivity {
 
-    public static final String TABLE = "1" ;
+    public static final String TABLE = "1";
     private TextView rows;
     private EditText resultat;
     private LinearLayout layout;
     private int nb;
     private Multiplication tableMultipication;
-
 
 
     @Override
@@ -36,10 +35,10 @@ public class TableMultiplicationActivity extends AppCompatActivity {
         tableMultipication.setTables();
         tableMultipication.setResultats();
 
-        for(Multiplication multi : tableMultipication.getTables()) {
+        for (Multiplication multi : tableMultipication.getTables()) {
             LinearLayout linearTMP = (LinearLayout) getLayoutInflater().inflate(R.layout.template_calcul, null);
             TextView calc = (TextView) linearTMP.findViewById(R.id.text_calcul);
-            calc.setText(multi.getOperande1()+ " x " + multi.getOperande2() + " = ");
+            calc.setText(multi.getOperande1() + " x " + multi.getOperande2() + " = ");
             layout.addView(linearTMP);
         }
     }
@@ -57,7 +56,7 @@ public class TableMultiplicationActivity extends AppCompatActivity {
                 } else {
                     erreurs++;
                 }
-                if (rep != resultats[i-1]) {
+                if (rep != resultats[i - 1]) {
                     erreurs++;
                 }
             }
@@ -69,11 +68,10 @@ public class TableMultiplicationActivity extends AppCompatActivity {
             intent.putExtras(extras);
             startActivity(intent);
 
-        }
-        else {
+        } else {
             Intent intent2 = new Intent(TableMultiplicationActivity.this, ErreursActivity.class);
             intent2.putExtra(ErreursActivity.LIB, "*");
-            intent2.putExtra(ErreursActivity.ERR, erreurs/2);
+            intent2.putExtra(ErreursActivity.ERR, erreurs / 2);
             startActivity(intent2);
         }
     }

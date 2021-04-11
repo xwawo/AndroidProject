@@ -23,22 +23,19 @@ public class FelicitationsActivity extends AppCompatActivity {
         mapp = MyApplication.getInstance();
         Bundle extras = getIntent().getExtras();
         libelle = extras.getString("LIB");
-        niveau = extras.getInt("LVL",0);
+        niveau = extras.getInt("LVL", 0);
         bouton1 = findViewById(R.id.btn1);
         texte = findViewById(R.id.feli_text);
         if (libelle.equals("+") || libelle.equals("-")) {
             if (niveau <= 3) {
                 bouton1.setText("Passer au niveau suivant");
-            }
-            else {
+            } else {
                 bouton1.setText("Choisir une autre operation");
             }
-        }
-        else if (libelle.equals("quiz")){
+        } else if (libelle.equals("quiz")) {
             if (mapp.getPrenom() != null) {
-                texte.setText("Felicitations " + mapp.getPrenom() +"! Vous avez " + niveau + " bonnes reponses sur 10");
-            }
-            else {
+                texte.setText("Felicitations " + mapp.getPrenom() + "! Vous avez " + niveau + " bonnes reponses sur 10");
+            } else {
                 texte.setText("Felicitations! Vous avez " + niveau + " bonnes reponses sur 10");
 
             }
@@ -51,22 +48,19 @@ public class FelicitationsActivity extends AppCompatActivity {
         if (libelle.equals("+") || libelle.equals("-")) {
             if (niveau <= 3) {
                 Intent intent = new Intent(this, AdditionSoustractionActivity.class);
-                intent.putExtra(String.valueOf(AdditionSoustractionActivity.NIV),niveau+1);
-                intent.putExtra(AdditionSoustractionActivity.OP,libelle);
+                intent.putExtra(String.valueOf(AdditionSoustractionActivity.NIV), niveau + 1);
+                intent.putExtra(AdditionSoustractionActivity.OP, libelle);
                 startActivity(intent);
 
-            }
-            else {
+            } else {
                 Intent intent = new Intent(this, ExoMath.class);
                 startActivity(intent);
             }
 
-        }
-        else if (libelle.equals("quiz")) {
+        } else if (libelle.equals("quiz")) {
             Intent intent = new Intent(this, ExoQuiz.class);
             startActivity(intent);
-        }
-        else {
+        } else {
             Intent intent = new Intent(this, TablesMultiplication.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);

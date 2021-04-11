@@ -1,48 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:gravity="center">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Choisis une operation !"
-        android:textSize="20dp"
-        android:textColor="@color/black"
-        android:textAlignment="center"
         android:fontFamily="casual"
-        android:gravity="center_horizontal" />
-
+        android:gravity="center_horizontal"
+        android:text="Choisis une operation !"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
 
 
     <ImageButton
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:gravity="center"
+        android:layout_marginBottom="20sp"
         android:background="@drawable/plus"
-        android:onClick="Additions"
-        android:layout_marginBottom="20sp"
-        />
+        android:gravity="center"
+        android:onClick="Additions" />
 
     <ImageButton
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:gravity="center"
-        android:text="*"
+        android:layout_marginBottom="20sp"
         android:background="@drawable/multiplication"
+        android:gravity="center"
         android:onClick="Multiplications"
-        android:layout_marginBottom="20sp"
-        />
+        android:text="*" />
 
 
     <ImageButton
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:gravity="center"
         android:background="@drawable/minus"
-        android:onClick="Soustractions"/>
-
+        android:gravity="center"
+        android:onClick="Soustractions" />
 
 
 </LinearLayout>

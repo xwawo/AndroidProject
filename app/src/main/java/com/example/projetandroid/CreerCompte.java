@@ -27,7 +27,7 @@ public class CreerCompte extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         //récuération de l'instance de MyActivity
-        mapp=MyApplication.getInstance();
+        mapp = MyApplication.getInstance();
 
         // On charge le XML pour créer l'arbre graphique
         setContentView(R.layout.activity_creation_compte);

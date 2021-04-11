@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //récuération de l'instance de MyActivity
-        mapp=MyApplication.getInstance();
+        mapp = MyApplication.getInstance();
 
         // Récupération du DatabaseClient
         mDb = DatabaseClient.getInstance(getApplicationContext());
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 mapp.setHighScore(user.getHighScore());
 
                 // Message
-                Toast.makeText(MainActivity.this, "Click : " + user.getId()+ " "+ user.getPrenom()+ " "+ user.getNom(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Click : " + user.getId() + " " + user.getPrenom() + " " + user.getNom(), Toast.LENGTH_SHORT).show();
 
                 Intent JouerActivity = new Intent(MainActivity.this, ChoixExercice.class);
                 startActivity(JouerActivity);
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent JouerActivity = new Intent(MainActivity.this, ChoixExercice.class);
                     startActivity(JouerActivity);
                 } else {
-                    Toast.makeText(this, mapp.getPrenom()+ " "+ mapp.getNom(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, mapp.getPrenom() + " " + mapp.getNom(), Toast.LENGTH_SHORT).show();
                     Intent JouerActivity = new Intent(MainActivity.this, ChoixExercice.class);
                     startActivity(JouerActivity);
                 }

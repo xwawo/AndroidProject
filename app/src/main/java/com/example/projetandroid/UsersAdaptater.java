@@ -40,7 +40,7 @@ public class UsersAdaptater extends ArrayAdapter<User> {
         TextView textViewUser = (TextView) rowView.findViewById(R.id.user);
 
         //
-        textViewUser.setText(user.getId()+ ") " +user.getNom()+ " "+ user.getPrenom()+ " | high score culture : "+user.getHighScore());
+        textViewUser.setText(user.getId() + ") " + user.getNom() + " " + user.getPrenom() + " | high score culture : " + user.getHighScore());
 
         //
         return rowView;

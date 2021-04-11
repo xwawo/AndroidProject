@@ -18,14 +18,14 @@ public class ChoixExercice extends AppCompatActivity {
 
         // On charge le XML pour créer l'arbre graphique
         setContentView(R.layout.activity_choix_exercice);
-        texte= findViewById(R.id.textView);
+        texte = findViewById(R.id.textView);
+        //récupération de l'instance du user
         mapp = MyApplication.getInstance();
-        texte.setText("Salut " + mapp.getPrenom() +"! Choisi le sujet qui t'interesse");
+        texte.setText("Salut " + mapp.getPrenom() + "! Choisi le sujet qui t'interesse");
     }
 
     public void exercicesMath(View view) {
         Intent MathExercicesActivity = new Intent(ChoixExercice.this, ExoMath.class);
-
         startActivity(MathExercicesActivity);
     }
 

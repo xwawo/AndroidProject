@@ -4,7 +4,9 @@ import android.app.Application;
 
 public class MyApplication extends Application {
 
-    public static MyApplication instance=null;
+    //instance unique de MyApplication
+    public static MyApplication instance = null;
+
     private String nom = null;
     private String prenom = null;
     private int id;
@@ -16,11 +18,10 @@ public class MyApplication extends Application {
         super.onCreate();
     }
 
-    public static MyApplication getInstance()
-    {
-        if(instance==null)
-        {
-            instance=new MyApplication();
+    //instance unique de MyApplication
+    public static MyApplication getInstance() {
+        if (instance == null) {
+            instance = new MyApplication();
         }
         return instance;
     }
@@ -28,6 +29,7 @@ public class MyApplication extends Application {
     public String getNom() {
         return nom;
     }
+
     public String getPrenom() {
         return prenom;
     }
@@ -43,6 +45,7 @@ public class MyApplication extends Application {
     public void setNom(String nom) {
         this.nom = nom;
     }
+
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }

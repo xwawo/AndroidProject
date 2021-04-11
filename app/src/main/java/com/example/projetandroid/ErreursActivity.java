@@ -32,19 +32,17 @@ public class ErreursActivity extends AppCompatActivity {
         bouton1 = findViewById(R.id.btn1);
         nbErr.setText("Nombre d'erreurs : " + nb);
         if (libelle.equals("+") || libelle.equals("-")) {
-                bouton1.setText("Choisir une autre operation");
-            }
-        else {
-                bouton1.setText("Choisir une autre table");
-            }
+            bouton1.setText("Choisir une autre operation");
+        } else {
+            bouton1.setText("Choisir une autre table");
         }
+    }
 
     public void choixExo(View view) {
         if (libelle.equals("+") || libelle.equals("-")) {
             Intent intent = new Intent(this, ExoMath.class);
             startActivity(intent);
-        }
-        else {
+        } else {
             Intent intent = new Intent(this, TablesMultiplication.class);
             startActivity(intent);
         }

@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 public class ChoixExercice extends AppCompatActivity {
 
     private TextView texte;

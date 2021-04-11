@@ -38,14 +38,13 @@ public class QcmActivity extends AppCompatActivity {
     private DatabaseClient mDb;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //instance BD
         mDb = DatabaseClient.getInstance(getApplicationContext());
         //instance current user
-        mapp=MyApplication.getInstance();
+        mapp = MyApplication.getInstance();
 
 
         setContentView(R.layout.activity_qcm);
@@ -62,7 +61,7 @@ public class QcmActivity extends AppCompatActivity {
         limit = 19;
         if (topic.equals("hist")) {
             indexQ = 20;
-            indexR=21;
+            indexR = 21;
             limit = 38;
         }
         creerContexe();
@@ -70,23 +69,22 @@ public class QcmActivity extends AppCompatActivity {
     }
 
     public void validerReponse(View view) {
-        if(reponses.getCheckedRadioButtonId()!=-1){
+        if (reponses.getCheckedRadioButtonId() != -1) {
             indexR += 2;
             indexQ += 2;
-            if (QCM.getReponses()[(indexQ/2)-1].equals(((RadioButton)findViewById(reponses.getCheckedRadioButtonId())).getText().toString())){
+            if (QCM.getReponses()[(indexQ / 2) - 1].equals(((RadioButton) findViewById(reponses.getCheckedRadioButtonId())).getText().toString())) {
                 score++;
                 Toast.makeText(getApplicationContext(), "Bonne Reponse!!", Toast.LENGTH_LONG).show();
-            }
-            else {
+            } else {
                 Toast.makeText(getApplicationContext(), "Mauvaise Reponse :(", Toast.LENGTH_LONG).show();
             }
             if (indexQ <= limit) {
-            creerContexe();}
-            else {
+                creerContexe();
+            } else {
                 Intent intent = new Intent(QcmActivity.this, FelicitationsActivity.class);
                 Bundle extras = new Bundle();
                 extras.putString("LIB", "quiz");
-                extras.putInt("LVL",score);
+                extras.putInt("LVL", score);
                 // enregistrement du score
                 if (score > mapp.getHighScore()) {
                     mapp.setHighScore(score);
@@ -131,19 +129,18 @@ public class QcmActivity extends AppCompatActivity {
                 }
             }
 
-        }
-        else {
+        } else {
             Toast.makeText(getApplicationContext(), "Veuillez cocher une case", Toast.LENGTH_LONG).show();
         }
     }
 
     public void creerContexe() {
-        text_score.setText("Score : "+ score + "/10");
-        question.setText(QCM.getQuestions(indexQ,0));
-        for (int i = 0; i<=reponses.getChildCount(); i++) {
+        text_score.setText("Score : " + score + "/10");
+        question.setText(QCM.getQuestions(indexQ, 0));
+        for (int i = 0; i <= reponses.getChildCount(); i++) {
             View obj = reponses.getChildAt(i);
             if (obj instanceof RadioButton) {
-                ((RadioButton) obj).setText(QCM.getQuestions(indexR,i));
+                ((RadioButton) obj).setText(QCM.getQuestions(indexR, i));
             }
         }
     }

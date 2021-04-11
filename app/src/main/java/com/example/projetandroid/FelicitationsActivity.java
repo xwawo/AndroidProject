@@ -35,7 +35,13 @@ public class FelicitationsActivity extends AppCompatActivity {
             }
         }
         else if (libelle.equals("quiz")){
-            texte.setText("Felicitations " + mapp.getPrenom() +" ! Vous avez " + niveau + " bonnes reponses sur 10");
+            if (mapp.getPrenom() != null) {
+                texte.setText("Felicitations " + mapp.getPrenom() +"! Vous avez " + niveau + " bonnes reponses sur 10");
+            }
+            else {
+                texte.setText("Felicitations! Vous avez " + niveau + " bonnes reponses sur 10");
+
+            }
             bouton1.setText("Passer à un autre sujet");
         }
 

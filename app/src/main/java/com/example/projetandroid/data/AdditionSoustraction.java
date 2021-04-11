@@ -81,7 +81,7 @@ public class AdditionSoustraction {
 
     private static int getRandomNumberInRange(int min, int max) { //fonction permettant de retourner un nombre aleatoire compris entre 2 bornes
 
-        if (min >= max) {
+        if (min > max) {
             throw new IllegalArgumentException("max must be greater than min");
         }
 

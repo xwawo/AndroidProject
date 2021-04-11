@@ -46,22 +46,21 @@ public class AdditionSoustractionActivity extends AppCompatActivity {
     public void correctionOp(View view) {
         int[] resultats = operations.getResultats();
         int erreurs = 0; //nb d'erreurs
-        for (int i = 2; i < layout.getChildCount(); i++) {
+        for (int i = 1; i < layout.getChildCount(); i++) {
             if (layout.getChildAt(i) instanceof LinearLayout) {
                 LinearLayout child = (LinearLayout) layout.getChildAt(i);
                 EditText reponse = (EditText) child.findViewById(R.id.template_resultat);
                 int rep = -1;
                 if (!reponse.getText().toString().isEmpty()) {
                     rep = Integer.parseInt(reponse.getText().toString());
-                } else {
-                    erreurs++;
-                    child.setBackgroundColor(16711680);
+                    if (rep != resultats[i-3]) {
+                        erreurs++;
+                    }
                 }
-                if (rep != resultats[i-3]) {
+                else {
                     erreurs++;
-                    child.setBackgroundColor(16711680);
+                }
 
-                }
             }
         }
         if (erreurs == 0) {
